@@ -1,0 +1,17 @@
+Solution (run in neovim):
+
+~ `:%s/^./+\0<CR>`
+~ `:%s/^$\n^+/\r<CR>`
+~ `ggx`
+~ `9999J`
+~ `:%s/ \([0-9]\)/\r\1/g<CR>`
+~ `:%s/ +/+/g<CR>`
+~ `gg`
+~ `qqV!bc<CR>jq`
+~ `999@q`
+~ `Vgg!sort --numeric-sort<CR>`
+~ `G3kdgg`
+~ `:%s/^./+\0<CR>`
+~ `ggx`
+~ `3gJ`
+~ `@q`

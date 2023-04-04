@@ -1,16 +1,38 @@
-Solution (run in neovim):
+* Solution (run in neovim):
 
-~ `:%s/^./+\0<CR>`
-~ `:%s/^$\n^+/\r<CR>`
-~ `ggx`
-~ `9999J`
-~ `:%s/ \([0-9]\)/\r\1/g<CR>`
-~ `:%s/ +/+/g<CR>`
-~ `gg`
-~ `qqV!bc<CR>jq`
-~ `999@q`
-~ `Vgg!sort --numeric-sort<CR>`
-~ `Gkdgg`
+** part one
+
+   ~ `:%s/^./+\0<CR>`
+   ~ `:%s/^$\n^+/\r<CR>` %cleanup%
+   ~ `ggx` %more cleanup (first line wasn’t matched by previous regex)%
+   ~ `9999J`
+   ~ `:%s/ \([0-9]\)/\r\1/g<CR>`
+   ~ `:%s/ +/+/g<CR>` %unnecessary cleanup%
+   ~ `gg`
+   ~ `qqV!bc<CR>jq`
+   ~ `999@q`
+   ~ `Vgg!sort --numeric-sort<CR>`
+   ~ `Gkdgg` %`kdgg` is not necessary%
+
+** part two
+
+   ~ `:%s/^./+\0<CR>`
+   ~ `:%s/^$\n^+/\r<CR>`
+   ~ `ggx`
+   ~ `9999J`
+   ~ `:%s/ \([0-9]\)/\r\1/g<CR>`
+   ~ `:%s/ +/+/g<CR>`
+   ~ `gg`
+   ~ `qqV!bc<CR>jq`
+   ~ `999@q`
+   ~ `Vgg!sort --numeric-sort<CR>`
+   ~ `G3kdgg` %here we branch out but everything after G is unnecessary%
+   ~ `:%s/^./+\0<CR>`
+   ~ `ggx`
+   ~ `3gJ`
+   ~ `@q`
+
+       ===
 
 And here we go!
 
